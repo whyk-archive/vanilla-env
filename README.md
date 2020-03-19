@@ -4,6 +4,7 @@ Vueとか使えない状況向け
 
 ## 利用方法
 以下キャプチャの『Use this template』をクリックしてリポジトリを新規作成
+![image](https://user-images.githubusercontent.com/16016681/77091623-2b049200-6a4c-11ea-99f7-d22fd408989c.png)
 
 ## できること
 - TypeScriptのコンパイル

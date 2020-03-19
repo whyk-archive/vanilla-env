@@ -4,6 +4,7 @@ Solution when Vue cannot be used.
 
 ## Usage
 Click "Use this template" in the capture below to create a new repository
+![image](https://user-images.githubusercontent.com/16016681/77091623-2b049200-6a4c-11ea-99f7-d22fd408989c.png)
 
 ## Feature
 - Compile TypeScript
