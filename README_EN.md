@@ -1,16 +1,23 @@
 # Vanilla Env
-Environment that compiles TypeScript and SCSS only with Parcel and compresses the image.  
-Solution when Vue cannot be used.
+Compile TypeScript and SCSS with only Parcel to compress images  
+For situations where you can't use Vue or something like that.
 
 ## Usage
-Click "Use this template" in the capture below to create a new repository
+Click on "Use this template" to create a new repository.
 ![image](https://user-images.githubusercontent.com/16016681/77091623-2b049200-6a4c-11ea-99f7-d22fd408989c.png)
 
 ## Feature
 - Compile TypeScript
-- Compile SCSS, add vendor prefix
-- Image compression
-- HTML, SCSS, JavaScript(TypeScript), image modification and monitoring
+- Compiling SCSS and giving vendor prefixes
+- Image Compression
+- HTML, SCSS, JavaScript(TypeScript) and image change monitoring
+
+## Dependences
+- Parcel - the bundle tool for no-config
+- Lynt - A lint tool for no-conference
+- TypeScript - a JavaScript extension language
+- Sass - CSS extension language
+  - Autoprefixer - A tool that automatically adds vendor prefixes to CSS
 
 ## Command
 ### Development output, server and browser startup, change monitoring
@@ -24,5 +31,5 @@ yarn build
 ```
 
 ## Precautions for use
-`yarn dev`'s support for multiple pages is weak.
-When starting the local server, it will not be displayed unless you write `/ index.html` in the path.
+Support for multiple pages in `yarn dev` is weak.  
+When you start the local server, you need to add `/index.html` to the end of the path.
