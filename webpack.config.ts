@@ -1,6 +1,11 @@
-import * as webpack from 'webpack';
 import * as path from 'path';
+import * as webpack from 'webpack';
 import * as webpackDevServer from 'webpack-dev-server';
+
+const output: webpack.Output = {
+  filename: 'main.js',
+  path: path.join(__dirname, '/dist')
+}
 
 const rules: webpack.RuleSetRule[] = [
   {
@@ -24,10 +29,7 @@ const config: webpack.Configuration = {
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   watch: process.env.NODE_ENV === 'development' ? true : false,
   entry: 'src/assets/ts/index.ts',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(process.cwd(), '/dist/')
-  },
+  output,
   module,
   devServer
 };
