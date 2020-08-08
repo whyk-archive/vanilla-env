@@ -2,7 +2,7 @@ const path = require('path')
 
 const output = {
   filename: 'main.js',
-  path: path.join(__dirname, 'dist', 'assets', 'js')
+  path: path.join(__dirname, 'dist/assets')
 }
 
 const devServer = {
