@@ -2,27 +2,13 @@ const path = require('path')
 
 const output = {
   filename: 'main.js',
-  path: path.join(__dirname, '/dist')
+  path: path.join(__dirname, 'dist', 'assets', 'js')
 }
-
-const resolve = {
-  extensions: ['.js', '.ts']
-}
-
-const rules = [
-  {
-    test: /\.ts$/,
-    use: 'ts-loader'
-  }
-];
-
-const module = {
-  rules
-};
 
 const devServer = {
   open: true,
   openPage: 'dist/index.html',
+  contentBase: 'dist',
   watchContentBase: true,
   port: 3000
 }
@@ -30,10 +16,8 @@ const devServer = {
 const config = {
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   watch: process.env.NODE_ENV === 'development' ? true : false,
-  entry: 'src/assets/ts/index.ts',
+  entry: './src/assets/js/index.js',
   output,
-  resolve,
-  module,
   devServer
 };
 
