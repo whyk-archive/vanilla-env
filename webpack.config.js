@@ -1,37 +1,40 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
-import * as webpackDevServer from 'webpack-dev-server';
+const path = require('path')
 
-const output: webpack.Output = {
+const output = {
   filename: 'main.js',
   path: path.join(__dirname, '/dist')
 }
 
-const rules: webpack.RuleSetRule[] = [
+const resolve = {
+  extensions: ['.js', '.ts']
+}
+
+const rules = [
   {
     test: /\.ts$/,
     use: 'ts-loader'
   }
 ];
 
-const module: webpack.Module = {
+const module = {
   rules
 };
 
-const devServer: webpackDevServer.Configuration = {
+const devServer = {
   open: true,
   openPage: 'dist/index.html',
   watchContentBase: true,
   port: 3000
 }
 
-const config: webpack.Configuration = {
+const config = {
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   watch: process.env.NODE_ENV === 'development' ? true : false,
   entry: 'src/assets/ts/index.ts',
   output,
+  resolve,
   module,
   devServer
 };
 
-export default config;
+module.exports = config
