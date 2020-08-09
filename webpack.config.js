@@ -1,5 +1,6 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const output = {
   filename: 'main.js',
@@ -42,10 +43,19 @@ const devServer = {
   port: 3000
 }
 
+// TODO: 現状だとHTMLがファイルごとに宣言が必要なので、HTML読み込んで自動的に宣言を生成するようにする
 const plugins = [
   new MiniCssExtractPlugin({
     filename: 'main.css'
-  })
+  }),
+  new HtmlWebpackPlugin({
+    filename: '../index.html',
+    template: './src/index.html'
+  }),
+  new HtmlWebpackPlugin({
+    filename: '../about/index.html',
+    template: './src/about/index.html'
+  }),
 ]
 
 const config = {
