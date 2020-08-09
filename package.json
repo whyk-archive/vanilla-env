@@ -1,7 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack",
+    "dev:compile": "cross-env NODE_ENV=development webpack",
+    "dev:sever": "webpack-dev-server",
+    "dev": "run-p dev:*",
     "build": "webpack",
     "lint:style": "stylelint **/*.scss --ignore-path .gitignore",
     "lint:js": "eslint --ext .js --ignore-path .gitignore webpack.config.js .",

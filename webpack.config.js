@@ -38,7 +38,6 @@ const rules = [
 
 const devServer = {
   open: true,
-  openPage: 'dist/index.html',
   contentBase: 'dist',
   watchContentBase: true,
   port: 3000,
