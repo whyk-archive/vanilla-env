@@ -2,6 +2,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const fs = require('fs')
 
 const output = {
   filename: 'main.js',
@@ -43,19 +44,41 @@ const devServer = {
   port: 3000,
 }
 
-// TODO: 現状だとHTMLがファイルごとに宣言が必要なので、HTML読み込んで自動的に宣言を生成するようにする
+const readdirRecursively = (dir, files = []) => {
+  const paths = fs.readdirSync(dir)
+  const dirs = []
+  for (const path of paths) {
+    const stats = fs.statSync(`${dir}/${path}`)
+    if (stats.isDirectory()) {
+      dirs.push(`${dir}/${path}`)
+    } else {
+      files.push(`${dir}/${path}`)
+    }
+  }
+  for (const d of dirs) {
+    files = readdirRecursively(d, files)
+  }
+  return files
+}
+
+const sourceFilesList = readdirRecursively('./src')
+let htmlWebpackPluginList = []
+sourceFilesList.forEach((file) => {
+  if (!file.includes('.html')) return
+  const replacePath = file.replace('./src/', '')
+  htmlWebpackPluginList.push(
+    new HtmlWebpackPlugin({
+      filename: `../${replacePath}`,
+      template: `./src/${replacePath}`,
+    })
+  )
+})
+
 const plugins = [
   new MiniCssExtractPlugin({
     filename: 'main.css',
   }),
-  new HtmlWebpackPlugin({
-    filename: '../index.html',
-    template: './src/index.html',
-  }),
-  new HtmlWebpackPlugin({
-    filename: '../about/index.html',
-    template: './src/about/index.html',
-  }),
+  ...htmlWebpackPluginList,
 ]
 
 const config = {
