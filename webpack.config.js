@@ -20,6 +20,15 @@ const rules = [
         loader: 'css-loader',
         options: {
           url: false,
+          sourceMap: true,
+          importLoaders: 2,
+        },
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          sourceMap: true,
+          plugins: [require('autoprefixer')({})],
         },
       },
       {
