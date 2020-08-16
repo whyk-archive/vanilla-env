@@ -2,6 +2,9 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default
+const ImageminMozjpeg = require('imagemin-mozjpeg')
 const fs = require('fs')
 
 const output = {
@@ -94,6 +97,32 @@ sourceFilesList.forEach((file) => {
 const plugins = [
   new MiniCssExtractPlugin({
     filename: 'main.css',
+  }),
+  new CopyWebpackPlugin({
+    patterns: [
+      {
+        from: 'src/assets/images',
+        to: 'images',
+      },
+    ],
+  }),
+  new ImageminWebpackPlugin({
+    test: /\.(jpe?g|png|gif|svg)$/i,
+    pngquant: {
+      quality: '65-80',
+    },
+    gifsicle: {
+      interlaced: false,
+      optimizationLevel: 1,
+      colors: 256,
+    },
+    svgo: {},
+    plugins: [
+      ImageminMozjpeg({
+        quality: 85,
+        progressive: true,
+      }),
+    ],
   }),
   ...htmlWebpackPluginList,
 ]
