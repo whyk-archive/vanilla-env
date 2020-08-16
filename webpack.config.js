@@ -11,6 +11,14 @@ const output = {
 
 const rules = [
   {
+    test: /\.js/,
+    use: [
+      {
+        loader: 'babel-loader',
+      },
+    ],
+  },
+  {
     test: /\.scss/,
     use: [
       {
