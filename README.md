@@ -1,36 +1,35 @@
 # Vanilla Env
-【日本語 / [英語](./README_EN.md)】
+【日本語 / [English](./README_EN.md)】
 
 VueやReactなどのフレームワークを用いない開発で使えるフロントエンド開発環境。  
-webpackで、SCSSやTypeScriptのコンパイルやバンドルを行う。
+webpackで、SCSSやJavaScriptのコンパイルやバンドルを行う。
 
 ## 利用方法
 『Use this template』をクリックしてリポジトリを新規作成。
 
-## やろうとしていること
+## 特徴
 - `src/`に開発コードを集約（HTMLを`dist/`やルート直下に置かない）
-- SCSSやTypeScriptを`src/assets/`に集約
-- SCSSのコンパイル、ベンダープレフィックスの付与
-- TypeScriptのコンパイルとバンドル
+- SCSSのコンパイル、ベンダープレフィックスの付与、CSSファイルに出力
+- JavaScriptのバンドル
+- IE11対応
 - 画像の圧縮
-- ブラウザのホットリロード
 
-## 想定される依存関係
+## 依存関係
 - webpack
+  - webpack-dev-server
 - Sass(dart-sass)
   - Autoprefixer
-- TypeScript
 - Prettier
 - Stylelint
 - ESLint
 
 ## コマンド
 ### 開発出力、サーバー・ブラウザ起動、変更監視
-```
-yarn dev
+``` bash
+$ npm run dev
 ```
 
 ### 本番出力
-```
-yarn build
+``` bash
+$ npm run build
 ```

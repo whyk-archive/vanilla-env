@@ -1,35 +1,35 @@
 # Vanilla Env
-Compile TypeScript and SCSS with only Parcel to compress images  
-For situations where you can't use Vue or something like that.
+【[日本語](./README.md) / English】
 
-## Usage
+A front-end development environment that can be used for development that does not use frameworks such as Vue and React.  
+Compilation and bundling of SCSS and JavaScript with webpack.
+
+## How to use
 Click on "Use this template" to create a new repository.
-![image](https://user-images.githubusercontent.com/16016681/77091623-2b049200-6a4c-11ea-99f7-d22fd408989c.png)
 
-## Feature
-- Compile TypeScript
-- Compiling SCSS and giving vendor prefixes
+## Features
+- Aggregate development code in `src/` (don't put HTML in `dist/` or directly under the root)
+- Compile SCSS, add vendor prefix and output to CSS files
+- JavaScript bundling
+- IE11 support
 - Image Compression
-- HTML, SCSS, JavaScript(TypeScript) and image change monitoring
 
-## Dependences
-- Parcel - the bundle tool for no-config
-- Lynt - A lint tool for no-conference
-- TypeScript - a JavaScript extension language
-- Sass - CSS extension language
-  - Autoprefixer - A tool that automatically adds vendor prefixes to CSS
+## Dependency
+- webpack
+  - webpack-dev-server
+- Sass(dart-sass)
+  - Autoprefixer
+- Prettier
+- Stylelint
+- ESLint
 
 ## Command
 ### Development output, server and browser startup, change monitoring
-```
-yarn dev
-```
-
-### Production output
-```
-yarn build
+``` bash
+$ npm run dev
 ```
 
-## Precautions for use
-Support for multiple pages in `yarn dev` is weak.  
-When you start the local server, you need to add `/index.html` to the end of the path.
+### Production Output
+``` bash
+$ npm run build
+```
