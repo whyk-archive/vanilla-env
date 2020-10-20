@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev:compile": "cross-env NODE_ENV=development webpack",
-    "dev:server": "webpack-dev-server",
+    "dev:server": "webpack-dev-server --hot --inline",
     "dev": "run-p dev:*",
     "build": "webpack",
     "lint:style": "stylelint **/*.scss --ignore-path .gitignore",
