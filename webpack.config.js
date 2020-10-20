@@ -59,7 +59,7 @@ const rules = [
 
 const devServer = {
   open: true,
-  contentBase: 'dist',
+  contentBase: path.resolve(__dirname, 'dist'),
   watchContentBase: true,
   port: 3000,
 }
@@ -85,11 +85,11 @@ const sourceFilesList = readdirRecursively('./src')
 let htmlWebpackPluginList = []
 sourceFilesList.forEach((file) => {
   if (!file.includes('.html')) return
-  const replacePath = file.replace('./src/', '')
+
   htmlWebpackPluginList.push(
     new HtmlWebpackPlugin({
-      filename: `../${replacePath}`,
-      template: `./src/${replacePath}`,
+      filename: `../${file.replace('./src/', '')}`,
+      template: file,
     })
   )
 })
