@@ -1,20 +1,20 @@
 # Vanilla Env
-【日本語 / [English](./README_EN.md)】
+【[日本語](./README_JP.md) / English】
 
-VueやReactなどのフレームワークを用いない開発で使えるフロントエンド開発環境。  
-webpackで、SCSSやJavaScriptのコンパイルやバンドルを行う。
+A front-end development environment that can be used for development that does not use frameworks such as Vue and React.  
+Compilation and bundling of SCSS and JavaScript with webpack.
 
-## 利用方法
-『Use this template』をクリックしてリポジトリを新規作成。
+## How to use
+Click on "Use this template" to create a new repository.
 
-## 特徴
-- `src/`に開発コードを集約（HTMLを`dist/`やルート直下に置かない）
-- SCSSのコンパイル、ベンダープレフィックスの付与、CSSファイルに出力
-- JavaScriptのバンドル
-- IE11対応
-- 画像の圧縮
+## Features
+- Aggregate development code in `src/` (don't put HTML in `dist/` or directly under the root)
+- Compile SCSS, add vendor prefix and output to CSS files
+- JavaScript bundling
+- IE11 support
+- Image Compression
 
-## 依存関係
+## Dependency
 - webpack
   - webpack-dev-server
 - Sass(dart-sass)
@@ -23,13 +23,13 @@ webpackで、SCSSやJavaScriptのコンパイルやバンドルを行う。
 - Stylelint
 - ESLint
 
-## コマンド
-### 開発出力、サーバー・ブラウザ起動、変更監視
+## Command
+### Development output, server and browser startup, change monitoring
 ``` bash
 $ npm run dev
 ```
 
-### 本番出力
+### Production Output
 ``` bash
 $ npm run build
 ```
