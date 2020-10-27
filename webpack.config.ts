@@ -1,18 +1,20 @@
 /* globals require, __dirname, process, module */
-const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default
-const ImageminMozjpeg = require('imagemin-mozjpeg')
-const fs = require('fs')
+import { join, resolve } from 'path'
+import { readdirSync, statSync } from 'fs'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import ImageminWebpackPlugin from 'imagemin-webpack-plugin'
+import ImageminMozjpeg from 'imagemin-mozjpeg'
+import type { Output, RuleSetRule, Module, Plugin, Configuration } from 'webpack'
+import type { Configuration as devServer } from 'webpack-dev-server'
 
-const output = {
+const output: Output = {
   filename: 'main.js',
-  path: path.join(__dirname, 'dist/assets'),
+  path: join(__dirname, 'dist/assets'),
 }
 
-const rules = [
+const rules: RuleSetRule[] = [
   {
     test: /\.js/,
     use: [
@@ -57,18 +59,22 @@ const rules = [
   },
 ]
 
-const devServer = {
+const module: Module = {
+  rules
+}
+
+const devServer: devServer = {
   open: true,
-  contentBase: path.resolve(__dirname, 'dist'),
+  contentBase: resolve(__dirname, 'dist'),
   watchContentBase: true,
   port: 3000,
 }
 
-const readdirRecursively = (dir, files = []) => {
-  const paths = fs.readdirSync(dir)
-  const dirs = []
+const readdirRecursively = (dir: string, files = []) => {
+  const paths = readdirSync(dir)
+  const dirs: string[] = []
   for (const path of paths) {
-    const stats = fs.statSync(`${dir}/${path}`)
+    const stats = statSync(`${dir}/${path}`)
     if (stats.isDirectory()) {
       dirs.push(`${dir}/${path}`)
     } else {
@@ -82,7 +88,7 @@ const readdirRecursively = (dir, files = []) => {
 }
 
 const sourceFilesList = readdirRecursively('./src')
-let htmlWebpackPluginList = []
+let htmlWebpackPluginList: HtmlWebpackPlugin[] = []
 sourceFilesList.forEach((file) => {
   if (!file.includes('.html')) return
 
@@ -94,7 +100,7 @@ sourceFilesList.forEach((file) => {
   )
 })
 
-const plugins = [
+const plugins: Plugin[] = [
   new MiniCssExtractPlugin({
     filename: 'main.css',
   }),
@@ -118,6 +124,7 @@ const plugins = [
     },
     svgo: {},
     plugins: [
+      // @ts-ignore
       ImageminMozjpeg({
         quality: 85,
         progressive: true,
@@ -127,16 +134,14 @@ const plugins = [
   ...htmlWebpackPluginList,
 ]
 
-const config = {
+const config: Configuration = {
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   watch: process.env.NODE_ENV === 'development' ? true : false,
   entry: './src/assets/js/index.js',
   output,
-  module: {
-    rules,
-  },
+  module,
   devServer,
   plugins,
 }
 
-module.exports = config
+export default config
