@@ -28,7 +28,7 @@
     "html-loader": "^3.0.0",
     "html-webpack-plugin": "^5.0.0",
     "imagemin-gifsicle": "^7.0.0",
-    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
     "imagemin-pngquant": "^9.0.0",
     "imagemin-svgo": "^10.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
